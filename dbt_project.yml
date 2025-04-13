@@ -25,7 +25,11 @@ seeds:
 
 models:
   jaffle_shop:
-    materialized: table
+    materialized: view
+    marts:
+      materialized: table
+      +docs:
+        node_color: 'gold'
     staging:
       materialized: view
       +docs:
