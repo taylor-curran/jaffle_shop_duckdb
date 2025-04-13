@@ -20,12 +20,6 @@ models:
       - name: first_order
         description: Date (UTC) of a customer's first order
 
-      - name: most_recent_order
-        description: Date (UTC) of a customer's most recent order
-
-      - name: number_of_orders
-        description: Count of the number of orders a customer has placed
-
       - name: total_order_amount
         description: Total value (AUD) of a customer's orders
 
@@ -78,5 +72,37 @@ models:
 
       - name: gift_card_amount
         description: Amount of the order (AUD) paid for by gift card
+        tests:
+          - not_null
+
+  - name: customer_daily_orders
+    description: Daily order patterns analysis for high-value customers (top quartile by CLV)
+
+    columns:
+      - name: customer_id
+        description: Foreign key to the customers table
+        tests:
+          - not_null
+          - relationships:
+              to: ref('customers')
+              field: customer_id
+
+      - name: order_date
+        description: Date of the orders
+        tests:
+          - not_null
+
+      - name: daily_order_count
+        description: Number of orders placed by the customer on this date
+        tests:
+          - not_null
+
+      - name: daily_order_value
+        description: Total value of orders placed by the customer on this date
+        tests:
+          - not_null
+
+      - name: customer_lifetime_value
+        description: Total lifetime value of the customer
         tests:
           - not_null
