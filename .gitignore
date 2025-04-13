@@ -1,3 +1,16 @@
 .env
 /env
 /.venv
+
+# Keep important dbt metadata files but ignore other target contents
+target/*.sql
+target/partial_parse.msgpack
+target/graph.gpickle
+target/index.html
+
+# DuckDB - this is binary so cascade won't find it useful context
+*.duckdb
+*.duckdb.wal
+
+# User specific
+.user.yml
