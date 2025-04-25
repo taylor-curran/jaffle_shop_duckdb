@@ -14,3 +14,13 @@ target/index.html
 
 # User specific
 .user.yml
+
+# ──────────────────────────────────────────────────────
+# dbt artifacts
+# ──────────────────────────────────────────────────────
+# compiled models, manifest, run_results, etc.
+target/
+# installed packages (from packages.yml)
+dbt_packages/
+# logs directory (if you configure logging locally)
+logs/
